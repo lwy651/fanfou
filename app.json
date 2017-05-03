@@ -1,0 +1,31 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/login/login"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "饭否",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#949494",
+    "selectedColor": "#FF7D32",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "主页",
+        "iconPath": "images/home_light.png",
+        "selectedIconPath": "images/home_fill_light.png"
+      },
+      {
+        "pagePath": "pages/login/login",
+        "text": "我的",
+        "iconPath": "images/my_light.png",
+        "selectedIconPath": "images/my_fill_light.png"
+      }
+    ]
+  }
+}
