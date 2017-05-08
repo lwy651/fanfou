@@ -1,4 +1,5 @@
-// pages/login/login.js
+// pages/user/user.js
+//const AV = require('../../utils/av-weapp-min.js');
 Page({
   data:{},
   onLoad:function(options){

@@ -1,0 +1,61 @@
+/* pages/home/home.wxss */
+
+.web_banner {
+  width: 100%;
+  height: 50%;
+  background-color: #ff6061;
+}
+
+.web_content {
+  width: 100%;
+  height: 50%;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 30rpx;
+  align-items: center;
+  display: flex;
+}
+
+.web_column {
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  display: inline-block;
+}
+
+.web_fan_btn {
+  width: 200rpx;
+  height: 200rpx;
+  border: 10rpx solid #999;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.web_fan_btn image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.web_btn_none {
+  color: #ccc;
+  fill: #ccc;
+  border: 10rpx solid #ccc;
+}
+
+.web_btn_select {
+  color: #ff6061;
+  fill: #ff6061;
+  border: 10rpx solid #ff6061;
+}
+
+.web_each_select {
+  color: #ff6061;
+  font-weight: bold;
+}
+
+.web_each_none {
+  color: #ccc;
+  font-weight: bold;
+}

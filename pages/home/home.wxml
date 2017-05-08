@@ -1,3 +1,24 @@
-<view class="classname">
-    <text>home</text>
+
+<!--pages/home/home.wxml-->
+<view class="container">
+  <view class="web_banner"></view>
+  <view class="web_content">
+    <view class="web_column">
+      <button id="each" bindtap="btnClick" class="web_fan_btn {{currtBtn==0?'web_btn_select':'web_btn_none'}}" hover-class="none">
+        <image src="../../images/fat.svg"></image>
+      </button>
+      <view class="{{currtBtn==0?'web_each_select':'web_each_none'}}">
+        <text>吃</text>
+      </view>
+    </view>
+    <view class="web_column">
+      <button id="noteach" bindtap="btnClick" class="web_fan_btn {{currtBtn==0?'web_btn_none':'web_btn_select'}}" hover-class="none">
+        <image src="../../images/refuse.svg"></image>
+        
+      </button>
+      <view class="{{currtBtn==0?'web_each_none':'web_each_select'}}">
+        <text>不吃</text>
+      </view>
+    </view>
+  </view>
 </view>
