@@ -13,8 +13,8 @@ Page({
         var that = this;
         that.data.user = User.current().toJSON();
         console.log(this.data.user);
-        User.current().set('username','刘五一');
-        User.current().save();
+        //User.current().set('username','刘五一');
+        //User.current().save();
         console.log(User.current().id);
     },
     btnClick: function (e) {
