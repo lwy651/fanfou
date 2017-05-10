@@ -21,7 +21,7 @@ Page({
   },
   btnClick: function (e) {
     var that = this;
-    if (that.data.user.realname) {
+    if (!that.data.user.realname) {
       wx.switchTab({
         url: '../user/user'
       })
@@ -38,5 +38,6 @@ Page({
     }
   },
   saveFan: function () {
+    console.log(11111);
   }
 })
