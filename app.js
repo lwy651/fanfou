@@ -11,16 +11,15 @@ App({
     var that = this;
     AV.User.loginWithWeapp().then(user => {
       that.globalData.user = user.toJSON();
+      var fan = new AV.Object('Fans');
+      fan.set('name', that.globalData.user.realname);
+      fan.set('userid', user);
+      fan.save().then(function (guangZhou) {
+        console.log(guangZhou.toJSON());
+      })
     })
       .catch(console.error);
-    var GuangZhou = new AV.Object('City');
-    GuangZhou.set("name","广州");
-    var GuangDong = new AV.Object('Province');
-    GuangDong.set('name','广东');
-    GuangZhou.set('dependent',GuangDong);
-    GuangZhou.save().then(function(guangZhou){
-      console.log(guangZhou);
-    })
+
   },
   getUserInfo: function (cb) {
     var that = this
