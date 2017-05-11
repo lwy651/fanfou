@@ -11,15 +11,8 @@ App({
     var that = this;
     AV.User.loginWithWeapp().then(user => {
       that.globalData.user = user.toJSON();
-      var fan = new AV.Object('Fans');
-      fan.set('name', that.globalData.user.realname);
-      fan.set('userid', user);
-      fan.save().then(function (guangZhou) {
-        console.log(guangZhou.toJSON());
-      })
     })
       .catch(console.error);
-
   },
   getUserInfo: function (cb) {
     var that = this
