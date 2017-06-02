@@ -3,6 +3,7 @@ const Fans = require('../../model/fans');
 const app = getApp();
 
 var fans = new Fans();
+var query = new AV.Query('Fans');
 
 Page({
   data: {
@@ -11,19 +12,21 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    //that.loginAndFetchTodos();
-
-    //fans.userid = AV.User.current();
-    //fans.set('userid', AV.User.current());
-    fans.save();
-    fans.fetch().then(function (fan) {
-      // // fan 是从服务器加载到本地的 fan 对象
-      console.log(fan.toJSON());
-      that.setData({ currtBtn: false });
-    }).catch(console.error);
+    that.loginAndFetchTodos();
   },
   loginAndFetchTodos: function () {
-
+    console.log(AV.User.current().toJSON());
+    query.equalTo('user', AV.User.current());
+    query.find().then(function (result) {
+      if (result.length > 0) {
+        fans = result[0];
+        console.log(fans.toJSON())
+        //fans.eachstate = true;
+      }
+      else {
+        fans.set("user", AV.User.current());
+      }
+    });
   },
   btnClick: function (e) {
     var that = this;
@@ -37,7 +40,7 @@ Page({
         if (that.data.currtBtn)
           return;
         fans.set({ eachstate: true }).save().then(function (vaule) {
-          console.log(value);
+          //console.log(value);
           if (vaule.toJSON().eachstate) {
             that.setData({ currtBtn: true });
           }
@@ -47,7 +50,7 @@ Page({
         if (!that.data.currtBtn)
           return;
         fans.set({ eachstate: false }).save().then(function (vaule) {
-          console.log(value);
+          //console.log(value);
           if (!vaule.toJSON().eachstate) {
             that.setData({ currtBtn: false });
           }
