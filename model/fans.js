@@ -9,5 +9,5 @@ class Fans extends AV.Object {
   }
 }
 
-AV.Object.register(Fans,'Fans');
+AV.Object.register(Fans);
 module.exports = Fans;
