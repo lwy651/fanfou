@@ -1,7 +1,9 @@
 /* pages/user/user.wxss */
-.wrapper{
+
+.wrapper {
   margin: 0 40rpx;
 }
+
 .section {
   width: 100%;
   height: 90rpx;
@@ -13,13 +15,13 @@
   border-bottom: 1rpx solid #ddd;
 }
 
-.section text{
+.section text {
   color: #aaa;
   font-size: 32rpx;
   flex: 3;
 }
 
-.section input{
+.section input {
   color: #888;
   font-size: 32rpx;
   width: 100%;
@@ -41,15 +43,76 @@
   justify-content: center;
   align-items: center;
   display: flex;
+  flex-direction: column;
 }
 
 .avatarBtn {
   margin-top: 40rpx;
-  background-color: #FF6061;
+  background-color: #ff6061;
   color: #fff;
 }
 
-.prompt{
+.prompt {
   font-size: 24rpx;
   color: #999;
+}
+
+.real_name {
+  text-align: center;
+  flex-wrap: wrap;
+  font-size: 52rpx;
+  padding: 20rpx;
+}
+.calendar_main {
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.time_date {
+  background-color: #FF6061;
+  font-size: 20rpx;
+  color: #eee;
+  display: flex;
+  /*box-shadow: 0 0.1em 1em 0 rgba(0, 0, 0, 0.25),
+                0 0.1em 0.5em 1px rgba(0, 0, 0, 0.35),
+                0 1em 2em 1px rgba(0, 0, 0, 0.15);*/
+  align-items: center;
+  height: 60rpx;
+}
+
+.date_tab {
+  flex: 1;
+  flex-wrap: nowrap;
+}
+
+.calendar__tbody {
+  width: 100%;
+  font-size: 32rpx;
+  background-color: #fff;
+  z-index: 1;
+  /*box-shadow: 0 1rpx 2rpx 0 rgba(0, 0, 0, 0.1), 0 1rpx 2rpx 1rpx rgba(0, 0, 0, 0.1), 0 1rpx 2rpx 1rpx rgba(0, 0, 0, 0.1);*/
+  box-shadow: 0 1rpx 1rpx 0 rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.calendar__month__day {
+  color: #fff;
+  flex-basis: 14.28571%;
+  padding: 30rpx;
+  box-sizing: border-box;
+  /*background-size: 100%;*/
+  background-image: radial-gradient(#FF6061 50%, rgba(0, 0, 0, 0) 50%);
+}
+.calendar_no_select{
+  color: #fff;
+  background-image: radial-gradient(#333 50%, rgba(0, 0, 0, 0) 53%);
+}
+.calendar_no_arrive{
+  color: #fff;
+  background-image: radial-gradient(#E64340 50%, rgba(0, 0, 0, 0) 53%);
+}
+.calendar_have{
+  color: #fff;
+  background-image: radial-gradient(#33DD30 50%, rgba(0, 0, 0, 0) 53%);
 }

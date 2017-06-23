@@ -3,11 +3,38 @@
 <view class="wrapper">
   <view class="portrait_column">
     <image class="portrait" src="{{userInfo.avatarUrl}}"></image>
+    <view class="real_name">
+      <text>{{user.realname}}</text>
+    </view>
   </view>
-  <view class="section">
-    <text>真实姓名：</text>
-    <input bindinput="inputChange" type="text" confirm-type="done" />
-  </view>
-  <text class="prompt">重要提示*请您务必填写真实的姓名，否则系统将会永久取消其吃饭资格！！！</text>
-  <button  bindtap="btnClick" class="avatarBtn">确定</button>
+  <block wx:if="{{user.realname}}">
+    <view class="calendar_main">
+      <view class="time_date">
+        <block wx:for="{{dayNames}}" wx:key="id" wx:for-item="dateName">
+          <view class="date_tab">
+            <text>{{dateName}}</text>
+          </view>
+        </block>
+      </view>
+      <view class="calendar__tbody">
+        <block wx:for="{{days}}" wx:key="id" wx:for-item="date">
+          <view class="calendar__month__day">
+            <block wx:if="{{date>0}}">
+              <text>{{date}}</text>
+            </block>
+          </view>
+        </block>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="section">
+      <text>真实姓名：</text>
+      <input bindinput="inputChange" type="text" confirm-type="done" />
+    </view>
+    <text class="prompt">重要提示*请您务必填写真实的姓名，否则系统将会永久取消其吃饭资格！！！</text>
+    <button bindtap="btnClick" class="avatarBtn">确定</button>
+  </block>
+  <contact-button type="default-light" size="20" session-from="weapp">
+  </contact-button>
 </view>

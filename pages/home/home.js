@@ -8,27 +8,30 @@ var query = new AV.Query('Fans');
 Page({
   data: {
     currtBtn: false,
-    userInfo: null
+    fans: null
   },
   onLoad: function () {
     var that = this;
-    console.log(AV.User.current().toJSON().realname);
+    if (app.globalData.fans) {
+      //that.setData({ fans: app.globalData.fans })
+      //that.setData({ currtBtn: app.globalData.fans.toJSON().eachstate })
+    }
     //that.loginAndFetchTodos();
   },
-  loginAndFetchTodos: function () {
-    console.log(AV.User.current().toJSON());
-    query.equalTo('user', AV.User.current());
-    query.find().then(function (result) {
-      if (result.length > 0) {
-        fans = result[0];
-        console.log(fans.toJSON())
-        //fans.eachstate = true;
-      }
-      else {
-        fans.set("user", AV.User.current());
-      }
-    });
-  },
+  // loginAndFetchTodos: function () {
+  //   console.log(AV.User.current().toJSON());
+  //   query.equalTo('user', AV.User.current());
+  //   query.find().then(function (result) {
+  //     if (result.length > 0) {
+  //       fans = result[0];
+  //       console.log(fans.toJSON())
+  //       //fans.eachstate = true;
+  //     }
+  //     else {
+  //       fans.set("user", AV.User.current());
+  //     }
+  //   });
+  // },
   btnClick: function (e) {
     var that = this;
     if (!AV.User.current().toJSON().realname) {
@@ -37,8 +40,14 @@ Page({
       })
     }
     else {
+      if (!app.globalData.fans)
+        return
       switch (e.currentTarget.id) {
         case "each":
+          app.globalData.fans.set({ eachstate: true }).save().then((result) => {
+            //that.setData({ fans: result })
+            that.setData({ currtBtn: result.toJSON().eachstate })
+          })
           /*if (that.data.currtBtn)
             return;
           fans.set({ eachstate: true }).save().then(function (vaule) {
@@ -49,6 +58,10 @@ Page({
           });*/
           break;
         case "noteach":
+          app.globalData.fans.set({ eachstate: false }).save().then((result) => {
+            //that.setData({ fans: result })
+            that.setData({ currtBtn: result.toJSON().eachstate })
+          })
           /*if (!that.data.currtBtn)
             return;
           fans.set({ eachstate: false }).save().then(function (vaule) {

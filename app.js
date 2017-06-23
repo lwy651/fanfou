@@ -36,21 +36,28 @@ App({
     ).then(user => user ? user : AV.User.loginWithWeapp());
   },
   fetchTodos: function (user) {
+    console.log("11111111111111")
     var that = this;
-    console.log(user.toJSON().realname);
+    console.log(user);
     const query = new AV.Query(Fans)
       .equalTo('user', AV.Object.createWithoutData('User', user.id))
       .find().then(function (result) {
+        console.log("22222222")
+        console.log(result.length)
         if (result.length > 0) {
+          console.log("3333333")
           that.globalData.fans = result[0]
         } else {
-          var myfan = new Fans()
-          myfan.set("user", AV.User.current())
-          myfan.save()
-            .then((fan) => { that.globalData.fans = fan })
-            .catch(console.error)
+          that.createFans();
         }
-      })
+      }).catch(error => consolo.error(error.message));
+  },
+  createFans: () => {
+    var myfan = new Fans()
+    myfan.set("user", AV.User.current())
+    myfan.save()
+      .then((fan) => { that.globalData.fans = fan; console.log("收到数据") })
+      .catch(error => consolo.error(error.message));
   },
   globalData: {
     globalData: null,
