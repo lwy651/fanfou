@@ -97,12 +97,12 @@
 }
 
 .calendar__month__day {
-  color: #fff;
+  color: #888;
   flex-basis: 14.28571%;
   padding: 30rpx;
   box-sizing: border-box;
   /*background-size: 100%;*/
-  background-image: radial-gradient(#FF6061 50%, rgba(0, 0, 0, 0) 50%);
+  /*background-image: radial-gradient(#FF6061 50%, rgba(0, 0, 0, 0) 50%);*/
 }
 .calendar_no_select{
   color: #fff;

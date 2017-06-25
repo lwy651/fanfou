@@ -1,8 +1,8 @@
 {
   "pages":[
-    
-    "pages/user/user",
     "pages/home/home",
+    "pages/user/user",
+    
     "pages/login/login"
   ],
   "window":{

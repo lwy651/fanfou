@@ -1,6 +1,7 @@
 //app.js
-const AV = require('./utils/av-weapp-min.js');
-const Fans = require('./model/fans');
+const AV = require('./utils/av-weapp-min.js')
+const Fans = require('./model/fans.js')
+const login_api = require('./utils/login_api.js')
 
 AV.init({
   appId: 'f1Y61SH1X9LcLTVEaFOdjQ3w-gzGzoHsz',
@@ -9,8 +10,10 @@ AV.init({
 
 App({
   onLaunch: function () {
+    console.log("launch")
     var that = this;
-    this.login().then(that.fetchTodos).catch(error => consolo.error(error.message));
+    login_api.av_login();
+    //this.login().then(that.fetchTodos).catch(error => consolo.error(error.message));
   },
   getUserInfo: function (cb) {
     var that = this
@@ -30,37 +33,8 @@ App({
       })
     }
   },
-  login: function () {
-    return AV.Promise.resolve(AV.User.current()).then(user =>
-      user ? (user.isAuthenticated().then(authed => authed ? user : null)) : null
-    ).then(user => user ? user : AV.User.loginWithWeapp());
-  },
-  fetchTodos: function (user) {
-    console.log("11111111111111")
-    var that = this;
-    console.log(user);
-    const query = new AV.Query(Fans)
-      .equalTo('user', AV.Object.createWithoutData('User', user.id))
-      .find().then(function (result) {
-        console.log("22222222")
-        console.log(result.length)
-        if (result.length > 0) {
-          console.log("3333333")
-          that.globalData.fans = result[0]
-        } else {
-          that.createFans();
-        }
-      }).catch(error => consolo.error(error.message));
-  },
-  createFans: () => {
-    var myfan = new Fans()
-    myfan.set("user", AV.User.current())
-    myfan.save()
-      .then((fan) => { that.globalData.fans = fan; console.log("收到数据") })
-      .catch(error => consolo.error(error.message));
-  },
   globalData: {
-    globalData: null,
+    test: "asdasdasd",
     user: null,
     fans: null
   }
